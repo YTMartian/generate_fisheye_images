@@ -7,4 +7,4 @@ Semantic Segmentation of Fisheye Images
 
 #### 效果
 
-[demo.gif](demo.gif)
+![demo.gif](demo.gif)
