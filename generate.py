@@ -140,7 +140,7 @@ def generateUV(img, show = True):
     # 返回(x,y)投影后的坐标
     @lru_cache(maxsize = 1024, typed = False)
     def get_projection(i, j):
-        cord_ij = cord[i][j]
+        cord_ij = cord[i][j].copy()
         x, y = cord_ij[:2]
         x, y = float(x), float(y)
         x, y = x + x_shift, y + y_shift
