@@ -173,14 +173,10 @@ def generateUV(img, show = True):
             block = [[i, j], [i + block_size - 1, j], [i + block_size - 1, j + block_size - 1], [i, j + block_size - 1]]
             block_proj = [[0, 0], [0, 0], [0, 0], [0, 0]]  # 投影后坐标
             for k in range(4):
-                if block[k][0] < 0:
-                    block[k][0] = 0
-                elif block[k][0] >= height - 1:  # 莫名其妙的边界错误
-                    block[k][0] = height - 2
-                if block[k][1] < 0:
-                    block[k][1] = 0
-                elif block[k][1] >= width - 1:
-                    block[k][1] = width - 2
+                block[k][0] = max(0, block[k][0])
+                block[k][0] = min(height - 2, block[k][0])  # 解决莫名其妙的边界错误
+                block[k][1] = max(0, block[k][1])
+                block[k][1] = min(width - 2, block[k][1])
                 block_proj[k] = get_projection(block[k][0], block[k][1])
             block = np.float32(block)
             block_proj = np.float32(block_proj)
